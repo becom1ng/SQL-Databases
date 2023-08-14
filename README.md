@@ -1,2 +1,2 @@
-# SQL-Databases
+# SQL Databases
 Nexul Academy Course Work
