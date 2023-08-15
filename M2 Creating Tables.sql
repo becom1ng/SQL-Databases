@@ -1,4 +1,6 @@
-Use SimpleOrder
+Use SimpleOrder;
+
+drop table if exists OrderItem, [Order], Product, Customer;
 
 create table Customer (
 	CustomerId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
@@ -11,7 +13,7 @@ create table [Order]  (
     OrderId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
     CustomerId int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerId),
     OrderDate datetimeoffset DEFAULT GETDATE(),
-    TotalPrice decimal NOT NULL,
+    TotalPrice decimal(8,2) NOT NULL,
     ItemCount int NOT NULL,
     OrderStatus varchar(20) DEFAULT ('placed'),
     AffiliateId int
@@ -20,12 +22,12 @@ create table [Order]  (
 create table Product (
 	ProductId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	ProductName varchar(200) NOT NULL,
-	Price decimal NOT NULL
+	Price decimal(6,2) NOT NULL
 );
 
 create table OrderItem (
 	OrderId int NOT NULL FOREIGN KEY REFERENCES [Order](OrderId),
 	ProductId int NOT NULL FOREIGN KEY REFERENCES Product(ProductId),
-	Price decimal NOT NULL,
+	Price decimal(6,2) NOT NULL,
 	Quantity int NOT NULL
 );
