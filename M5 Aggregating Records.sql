@@ -7,4 +7,4 @@ JOIN (
 	JOIN OrderItem i ON i.OrderId = o.OrderId
 	GROUP BY i.ProductId
 	) o ON o.ProductId = p.ProductId
-GROUP BY p.ProductName
+GROUP BY p.ProductName;
