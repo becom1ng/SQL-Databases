@@ -26,7 +26,7 @@ create table Product (
 );
 
 create table OrderItem (
-	OrderItemId int NOT NULL IDENTITY(1,1) PRIMARY KEY
+	OrderItemId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	OrderId int NOT NULL FOREIGN KEY REFERENCES [Order](OrderId),
 	ProductId int NOT NULL FOREIGN KEY REFERENCES Product(ProductId),
 	Price decimal(6,2) NOT NULL,
